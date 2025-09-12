@@ -52,6 +52,7 @@ public class CrossMachine : ModTile
         if (TileObjectData.TopLeft(i, j) != new Point16(i, j)) return;
         if (!TileEntity.TryGet(i, j, out MachineTileEntity tileEntity)) return;
         if(tileEntity.IOType != MachineIOType.Input) return;
+        if (!BaseUdpClient.JudgeOnline()) return;
         tileEntity.UdpEntity.SendSetSignalMessage(tileEntity.Channel);
     }
 
