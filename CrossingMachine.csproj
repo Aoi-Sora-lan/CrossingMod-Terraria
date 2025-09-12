@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Import tModLoader mod properties -->
+	<Import Project="..\tModLoader.targets" />
+
+	<!-- General -->
+	<PropertyGroup>
+	</PropertyGroup>
+
+	<!-- References -->
+	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.4-beta1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="CrossGameLibrary">
+	    <HintPath>lib\CrossGameLibrary.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Mixture">
+	    <HintPath>..\ModAssemblies\Mixture_v0.1.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Newtonsoft.Json">
+	    <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Serilog">
+	    <HintPath>lib\Serilog.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Serilog.Sinks.Console">
+	    <HintPath>lib\Serilog.Sinks.Console.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+// Commands.SocketCommand.Description: Mods.CrossingMachine.Commands.SocketCommand.Description
+
+Items: {
+	UIOpenItem: {
+		DisplayName: 机器
+		Tooltip: ""
+	}
+}
+
+Configs: {
+	CrossMachineConfig: {
+		DisplayName: 超维度机器配置
+		Headers.General: 通用设置
+
+		CrossServerIP: {
+			Label: 中间层服务端IP
+			// Tooltip: ""
+		}
+
+		CrossServerPort: {
+			Label: 中间层服务端端口
+			// Tooltip: ""
+		}
+
+		CrossLocalPort: {
+			Label: 本地端口
+			// Tooltip: ""
+		}
+	}
+}

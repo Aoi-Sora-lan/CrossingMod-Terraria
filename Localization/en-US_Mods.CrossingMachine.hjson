@@ -1,0 +1,30 @@
+Commands.SocketCommand.Description: Mods.CrossingMachine.Commands.SocketCommand.Description
+
+Items: {
+	UIOpenItem: {
+		DisplayName: Cross Machine
+		Tooltip: ""
+	}
+}
+
+Configs: {
+	CrossMachineConfig: {
+		DisplayName: Cross Machine Config
+		Headers.General: General Header
+
+		CrossServerIP: {
+			Label: Cross Server I P
+			Tooltip: ""
+		}
+
+		CrossServerPort: {
+			Label: Cross Server Port
+			Tooltip: ""
+		}
+
+		CrossLocalPort: {
+			Label: Cross Local Port
+			Tooltip: ""
+		}
+	}
+}

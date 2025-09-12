@@ -1,0 +1,4 @@
+displayName = Crossing Machine
+author = Aoi Sora
+version = 0.1
+dllReferences = CrossGameLibrary,Newtonsoft.Json,Serilog,Serilog.Sinks.Console
