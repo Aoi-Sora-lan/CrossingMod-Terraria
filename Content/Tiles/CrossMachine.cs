@@ -1,6 +1,8 @@
+using CrossGameLibrary.Net;
 using CrossingMachine.Common.UI;
 using CrossingMachine.Content.TileEntities;
 using Microsoft.Xna.Framework.Graphics;
+using Serilog;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -14,19 +16,19 @@ public class CrossMachine : ModTile
     public override void SetStaticDefaults()
     {
         //Main.tileShine[Type] = 1100;
-        Main.tileSolid[Type] = true;
+        Main.tileSolid[Type] = false;
         Main.tileNoAttach[Type] = true;
-
         Main.tileSolidTop[Type] = true;
-
         TileID.Sets.IsAContainer[Type] = true;
         Main.tileContainer[Type] = true;
         AdjTiles = [TileID.Containers];
         Main.tileFrameImportant[Type] = true;
+        TileID.Sets.PreventsTileRemovalIfOnTopOfIt[Type] = true;
+        TileID.Sets.PreventsTileHammeringIfOnTopOfIt[Type] = true;
+        TileID.Sets.AvoidedByMeteorLanding[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.LavaDeath = false;
-        //TileID.Sets.BasicChest[Type] = true;
         TileObjectData.newTile.HookPostPlaceMyPlayer = ModContent.GetInstance<MachineTileEntity>().Generic_HookPostPlaceMyPlayer;
         TileObjectData.newTile.AnchorInvalidTiles = [
             TileID.MagicalIceBlock,
@@ -36,10 +38,7 @@ public class CrossMachine : ModTile
             TileID.RollingCactus
         ];
         TileObjectData.newTile.CoordinateHeights = [16, 18];
-        TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
-        //VanillaFallbackOnModDeletion = TileID.MetalBars;
-        //AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.MetalBar"));
     }
 
     public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawData)
@@ -52,6 +51,7 @@ public class CrossMachine : ModTile
         base.HitWire(i, j);
         if (TileObjectData.TopLeft(i, j) != new Point16(i, j)) return;
         if (!TileEntity.TryGet(i, j, out MachineTileEntity tileEntity)) return;
+        if(tileEntity.IOType != MachineIOType.Input) return;
         tileEntity.UdpEntity.SendSetSignalMessage(tileEntity.Channel);
     }
 

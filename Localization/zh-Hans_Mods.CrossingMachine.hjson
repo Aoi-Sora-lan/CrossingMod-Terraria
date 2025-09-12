@@ -5,6 +5,11 @@ Items: {
 		DisplayName: 机器
 		Tooltip: ""
 	}
+
+	CrossMachine: {
+		DisplayName: 机器
+		Tooltip: 可以跨游戏传输的机器！
+	}
 }
 
 Configs: {

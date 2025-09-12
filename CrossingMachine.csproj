@@ -15,9 +15,6 @@
 	  <Reference Include="CrossGameLibrary">
 	    <HintPath>lib\CrossGameLibrary.dll</HintPath>
 	  </Reference>
-	  <Reference Include="Mixture">
-	    <HintPath>..\ModAssemblies\Mixture_v0.1.dll</HintPath>
-	  </Reference>
 	  <Reference Include="Newtonsoft.Json">
 	    <HintPath>lib\Newtonsoft.Json.dll</HintPath>
 	  </Reference>

@@ -5,6 +5,11 @@ Items: {
 		DisplayName: Cross Machine
 		Tooltip: ""
 	}
+
+	CrossMachine: {
+		DisplayName: Cross Machine
+		Tooltip: ""
+	}
 }
 
 Configs: {

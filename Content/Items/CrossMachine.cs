@@ -5,14 +5,14 @@ using Terraria.ModLoader;
 
 namespace CrossingMachine.Content.Items;
 
-public class UIOpenItem : ModItem
+public class CrossMachine : ModItem
 {
 
 	public override void SetDefaults() {
 		Item.width = 20; // The item texture's width
 		Item.height = 20; // The item texture's height
-		Item.useStyle = ItemUseStyleID.DrinkLiquid;
-
+		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.CrossMachine>(), 0);
+		Item.rare = ItemRarityID.Master;
 		Item.maxStack = Item.CommonMaxStack; // The item's max stack value
 		Item.value = Item.buyPrice(silver: 1); // The value of the item in copper coins. Item.buyPrice & Item.sellPrice are helper methods that returns costs in copper coins based on platinum/gold/silver/copper arguments provided to it.
 	}
@@ -20,15 +20,15 @@ public class UIOpenItem : ModItem
 	public override bool? UseItem(Player player)
 	{
 
-		Item.DefaultToPlaceableTile(ModContent.TileType<CrossMachine>());
+		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.CrossMachine>());
 		return base.UseItem(player);
 	}
 
 	// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 	public override void AddRecipes() {
-		CreateRecipe(999)
-			.AddIngredient(ItemID.DirtBlock, 10)
-			.AddTile(TileID.WorkBenches)
+		CreateRecipe(1)
+			.AddIngredient(ItemID.IronBar, 10)
+			.AddTile(TileID.Anvils)
 			.Register();
 	}
 }

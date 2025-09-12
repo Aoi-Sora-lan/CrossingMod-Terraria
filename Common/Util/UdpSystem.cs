@@ -13,16 +13,16 @@ namespace CrossingMachine.Common.Util;
 public class UdpSystem : ModSystem
 {
     public static UdpSystem Instance;
-    private BaseUdpClient _client;
+    public BaseUdpClient Client;
     private const string GameType = "Terraria";
     private string _gameId;
     public void Init()
     {
         if(Main.netMode == NetmodeID.MultiplayerClient) return;
         var ins = ModContent.GetInstance<CrossMachineConfig>();
-        _client = new BaseUdpClient(int.Parse(ins.CrossLocalPort), ins.CrossServerIP, int.Parse(ins.CrossServerPort));
+        Client = new BaseUdpClient(int.Parse(ins.CrossLocalPort), ins.CrossServerIP, int.Parse(ins.CrossServerPort));
         // _client = new BaseUdpClient(12001, "192.168.1.102", 11000);
-        _client.Start();
+        Client.Start();
         _gameId = GenerateShortGuidId();
     }
 
@@ -47,13 +47,13 @@ public class UdpSystem : ModSystem
             GameId = _gameId,
             GameType = GameType,
         };
-        var machineEntity = _client.Register(address with { MachineId = GenerateShortGuidId() }, logic);
+        var machineEntity = Client.Register(address with { MachineId = GenerateShortGuidId() }, logic);
         return machineEntity;
     }
     public async void Close()
     {
-        await _client.RemoveMachines();
-        _client?.Dispose();
+        await Client.RemoveMachines();
+        Client?.Dispose();
     }
     public static string GenerateShortGuidId()
     {

@@ -9,6 +9,7 @@ using CrossingMachine.Common.LoggerSink;
 using CrossingMachine.Common.UI;
 using CrossingMachine.Common.Util;
 using CrossingMachine.Content.Tiles;
+using Serilog;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -99,7 +100,7 @@ public class MachineTileEntity : ModTileEntity, IMachineLogic
                 HoldItems[1].type,
                 HoldItems[1].stack);
         }
-        UdpEntity.SendRemoveMachineMessage();
+        UdpSystem.Instance.Client.RemoveMachine(UdpEntity);
     }
 
     private bool _firstUpdate = true;
@@ -201,7 +202,10 @@ public class MachineTileEntity : ModTileEntity, IMachineLogic
 
     public void OnSignal()
     {
-        Wiring.TripWire(Position.X, Position.Y,1,1);
+        if (IOType == MachineIOType.Output)
+        {
+            Wiring.TripWire(Position.X, Position.Y,1,1);
+        }
     }
     
     public void ChangeChannel(int delta)
