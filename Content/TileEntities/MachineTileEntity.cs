@@ -151,8 +151,9 @@ public class MachineTileEntity : ModTileEntity, IMachineLogic
     public bool CanTransfer(string itemId, int itemCount)
     {
         if (HoldItems[1].IsAir) return true;
-        var itemName = ItemIdLookup.GetNameById((short)HoldItems[1].type);
-        var idDiff = itemId != itemName;
+        var item = ItemIdLookup.GetIdByName(itemId);
+        if(item == null) return false;
+        var idDiff = item != HoldItems[1].type;
         if (idDiff) return false;
         var transCount = Math.Max(0, 64 - HoldItems[1].stack);
         return transCount > 0;
