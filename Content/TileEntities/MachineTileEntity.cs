@@ -155,10 +155,6 @@ public class MachineTileEntity : ModTileEntity, IMachineLogic
         if(item == null) return false;
         var idDiff = item != HoldItems[1].type;
         if (idDiff) return false;
-        Main.NewText(HoldItems[1].maxStack);
-        Main.NewText(HoldItems[1].stack);
-        Main.NewText(HoldItems[1].IsAir);
-        Main.NewText(HoldItems[1].Name);
         var transCount = Math.Max(0, HoldItems[1].maxStack - HoldItems[1].stack);
         return transCount > 0;
     }
