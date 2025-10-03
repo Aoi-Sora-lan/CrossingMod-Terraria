@@ -27,7 +27,7 @@ public class CrossMachine : ModItem
 	// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 	public override void AddRecipes() {
 		CreateRecipe(1)
-			.AddIngredient(ItemID.IronBar, 10)
+			.AddRecipeGroup(RecipeGroupID.IronBar, 10)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}
